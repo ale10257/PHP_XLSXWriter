@@ -1,10 +1,12 @@
 <?php
-set_include_path( get_include_path().PATH_SEPARATOR."..");
-include_once("xlsxwriter.class.php");
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
+
+use oms\xlsxWriter\XlsxWriter;
+
+$writer = new XlsxWriter();
 
 $chars = 'abcdefgh';
 
-$writer = new XLSXWriter();
 $writer->writeSheetHeader('Sheet1', array('col-string'=>'string','col-numbers'=>'integer','col-timestamps'=>'datetime'), ['auto_filter'=>true, 'widths'=>[15,15,30]] );
 for($i=0; $i<1000; $i++)
 {

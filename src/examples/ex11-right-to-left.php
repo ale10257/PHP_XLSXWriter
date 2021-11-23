@@ -1,6 +1,9 @@
 <?php
-set_include_path( get_include_path().PATH_SEPARATOR."..");
-include_once("xlsxwriter.class.php");
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
+
+use oms\xlsxWriter\XlsxWriter;
+
+$writer = new XlsxWriter();
 
 $header = array(
   'c1-text'=>'string',//text
@@ -9,7 +12,7 @@ $header = array(
 $rows = array(
   array('abcdefg','hijklmnop'),
 );
-$writer = new XLSXWriter();
+
 $writer->setRightToLeft(true);
 
 $writer->writeSheetHeader('Sheet1', $header);

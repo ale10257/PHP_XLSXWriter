@@ -1,6 +1,9 @@
 <?php
-set_include_path( get_include_path().PATH_SEPARATOR."..");
-include_once("xlsxwriter.class.php");
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
+
+use oms\xlsxWriter\XlsxWriter;
+
+$writer = new XlsxWriter();
 
 $header = array(
     'year'=>'string',
@@ -18,7 +21,7 @@ $data2 = array(
     array('2003','01','343.12','4000000000'),
     array('2003','02','345.12','2000000000'),
 );
-$writer = new XLSXWriter();
+
 $writer->writeSheetHeader('Sheet1', $header);
 foreach($data1 as $row)
 	$writer->writeSheetRow('Sheet1', $row);

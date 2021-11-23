@@ -1,14 +1,15 @@
 <?php
-set_include_path( get_include_path().PATH_SEPARATOR."..");
-include_once("xlsxwriter.class.php");
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
+
+use oms\xlsxWriter\XlsxWriter;
+
+$writer = new XlsxWriter();
 
 $chars = "abcdefghijklmnopqrstuvwxyz0123456789 ";
 $s = '';
 for($j=0; $j<16192;$j++)
 	$s.= $chars[rand()%36];
 
-
-$writer = new XLSXWriter();
 $writer->writeSheetHeader('Sheet1', array('c1'=>'string','c2'=>'string','c3'=>'string','c4'=>'string') );//optional
 for($i=0; $i<250000; $i++)
 {

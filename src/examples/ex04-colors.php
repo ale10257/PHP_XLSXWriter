@@ -1,8 +1,10 @@
 <?php
-set_include_path( get_include_path().PATH_SEPARATOR."..");
-include_once("xlsxwriter.class.php");
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
 
-$writer = new XLSXWriter();
+use oms\xlsxWriter\XlsxWriter;
+
+$writer = new XlsxWriter();
+
 $colors = array('ff','cc','99','66','33','00');
 foreach($colors as $b) {
 	foreach($colors as $g) {

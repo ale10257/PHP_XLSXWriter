@@ -1,6 +1,9 @@
 <?php
-set_include_path( get_include_path().PATH_SEPARATOR."..");
-include_once("xlsxwriter.class.php");
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
+
+use oms\xlsxWriter\XlsxWriter;
+
+$writer = new XlsxWriter();
 
 $sheet1header = array(
     'c1-string'=>'string',
@@ -44,7 +47,6 @@ $date = '2018-12-31 23:59:59';
 $time = '23:59:59';
 $amount = '5120.5';
 
-$writer = new XLSXWriter();
 $writer->setAuthor('Some Author');
 $writer->writeSheetHeader('BasicFormats',$sheet1header);
 $writer->writeSheetRow('BasicFormats',array($pi,$pi,$pi,$pi,$pi,$pi,$pi,$pi,$pi) );

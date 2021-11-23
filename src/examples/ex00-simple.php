@@ -1,6 +1,9 @@
 <?php
-set_include_path( get_include_path().PATH_SEPARATOR."..");
-include_once("xlsxwriter.class.php");
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
+
+use oms\xlsxWriter\XlsxWriter;
+
+$writer = new XlsxWriter();
 
 $header = array(
   'c1-text'=>'string',//text
@@ -21,7 +24,6 @@ $rows = array(
   array('x601',602,603,604,605,606,'2018-06-07','2018-06-08'),
   array('x701',702,703,704,705,706,'2018-07-07','2018-07-08'),
 );
-$writer = new XLSXWriter();
 
 $writer->writeSheetHeader('Sheet1', $header);
 foreach($rows as $row)
@@ -29,7 +31,7 @@ foreach($rows as $row)
 
 //$writer->writeSheet($rows,'Sheet1', $header);//or write the whole sheet in 1 call
 
-$writer->writeToFile('xlsx-simple.xlsx');
-//$writer->writeToStdOut();
-//echo $writer->writeToString();
+//->writeToFile('xlsx-simple.xlsx');
+$writer->writeToStdOut();
+echo $writer->writeToString();
 

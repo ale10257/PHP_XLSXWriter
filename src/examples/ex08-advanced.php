@@ -1,8 +1,10 @@
 <?php
-set_include_path( get_include_path().PATH_SEPARATOR."..");
-include_once("xlsxwriter.class.php");
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
 
-$writer = new XLSXWriter();
+use oms\xlsxWriter\XlsxWriter;
+
+$writer = new XlsxWriter();
+
 $keywords = array('some','interesting','keywords');
 
 $writer->setTitle('Some Title');

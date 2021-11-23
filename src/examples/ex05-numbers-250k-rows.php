@@ -1,8 +1,9 @@
 <?php
-set_include_path( get_include_path().PATH_SEPARATOR."..");
-include_once("xlsxwriter.class.php");
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
 
-$writer = new XLSXWriter();
+use oms\xlsxWriter\XlsxWriter;
+
+$writer = new XlsxWriter();
 $writer->writeSheetHeader('Sheet1', array('c1'=>'integer','c2'=>'integer','c3'=>'integer','c4'=>'integer') );//optional
 for($i=0; $i<250000; $i++)
 {
